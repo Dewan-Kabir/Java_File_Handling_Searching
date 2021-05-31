@@ -69,13 +69,7 @@ public class CsvKeywordSearcher {
             /** Reading the array list line by line up until the list is completed, and appending a statement to each line  **/
             while ((indigogoLine = indigogoBuffer.readLine()) != null) {
 
-               System.out.println("Requested Data for matching Keywords: " + indigogoCSVtoArrayList(indigogoLine , keywordSelection) + "\n");
-
-
-
-
-
-
+               System.out.println("Requested Data for matching Keywords: " + CSVtoArrayConverter.indigogoCSVtoArrayList(indigogoLine , keywordSelection) + "\n");
 
 
             }
@@ -119,25 +113,6 @@ public class CsvKeywordSearcher {
         System.out.println(saveTimeNow);
 
 
-//        try {
-//            FileOutputStream outputStream = new FileOutputStream("Data.txt" , true);
-//            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
-//            BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-//
-//            bufferedWriter.write(saveCurrentKeyword.toString());
-//            bufferedWriter.write(",");
-//            bufferedWriter.write(saveTimeNow.toString());
-//            bufferedWriter.newLine();
-//
-//
-//            bufferedWriter.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
-
-
         Path path1 = Paths.get("Data.txt");
 
         FileWriter fw = new FileWriter("Data.txt",true);
@@ -153,15 +128,6 @@ public class CsvKeywordSearcher {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -187,9 +153,6 @@ public class CsvKeywordSearcher {
             }
 
 
-
-
-
         }
         else {
 
@@ -213,54 +176,6 @@ public class CsvKeywordSearcher {
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        try {
-//            File file = new File("Data.txt" );
-//            FileWriter fileReader = new FileWriter(file , true); // A stream that connects to the text file
-//            BufferedWriter bufferedWriter = new BufferedWriter(fileReader ); // Connect the FileWriter to the BufferedWriter
-//
-//            bufferedWriter.write(saveCurrentKeyword);
-//            bufferedWriter.write(",");
-//            bufferedWriter.write(saveTimeNow);
-//            bufferedWriter.newLine();
-//
-//
-//            bufferedWriter.close (); // Close the stream
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 
@@ -269,43 +184,7 @@ public class CsvKeywordSearcher {
 
 
 
-    public static ArrayList<String> indigogoCSVtoArrayList(String indigogoCSV , String keyword) {
-        /**We are first defining the keywords for which the program will search for in the list of arrays*/
 
-        ArrayList<String> indigogoResult = new ArrayList<String>();
-
-        if (indigogoCSV != null) {
-            /** We are implementing Regex concepts, where the csv are being separated at every (,) and any white spaces,
-             * before and after it, are being removed , including the (,) itself. This ensures,that all elements are stored correctly in the array **/
-            String[] splitData = indigogoCSV.split("\\s*,\\s*");
-            for (int i = 0; i < splitData.length; i++) {
-
-                /** The below code block will implement certain  conditions, and if either of the keywords are present in the array ,
-                 * it will print the category, close_date, funds_raised_percent and the tag_line. The category and Tag_line, were added to better
-                 * identify what type of product was being selected based on the keywords. **/
-                if ((!(splitData[i] == null) || !(splitData[i].length() == 0)) && (   (splitData[i].contains(keyword))
-                          )) {
-                    //  ||  (splitData[i].contains(keyword2))  || (splitData[i].contains(keyword3))
-                    indigogoResult.add(splitData[1]); // Adding the Category
-                    indigogoResult.add(splitData[4]); // Adding the close_date
-                    indigogoResult.add(splitData[7]); // Adding the funds_raised_percent
-                    indigogoResult.add(splitData[24]); // Adding the tagline
-
-
-                    /** The else condition states that if neither of the keywords are present in the array , to clear the contents of the array and return them. **/
-                }else if (  !((splitData[i].contains(keyword))  )) {
-                    if (indigogoResult != null) {
-                        indigogoResult.clear();
-                    }
-                }
-            }
-        }
-
-        return indigogoResult;
-
-        // ||  !(splitData[i].contains(keyword2))  || !(splitData[i].contains(keyword3)))
-
-    }
 
 
 
