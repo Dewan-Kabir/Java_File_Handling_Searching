@@ -1,5 +1,19 @@
 import java.util.ArrayList;
 
+
+/**
+ * @author Dewan M F Kabir
+ * Class: CS 622 O1
+ * College: BU MET
+ * Assignment: 03
+ * Concept: Exceptions and Basic I/O
+ * Date: 05/28/2021
+ *
+ */
+
+/** This code block has been extracted from the CsvKeywordSearcher class, and was one of the main logic components
+ * for Assignment 02  **/
+
 public class CSVtoArrayConverter {
 
 
@@ -19,6 +33,8 @@ public class CSVtoArrayConverter {
                  * identify what type of product was being selected based on the keywords. **/
                 if ((!(splitData[i] == null) || !(splitData[i].length() == 0)) && (   (splitData[i].contains(keyword))
                 )) {
+
+
                     //  ||  (splitData[i].contains(keyword2))  || (splitData[i].contains(keyword3))
                     indigogoResult.add(splitData[1]); // Adding the Category
                     indigogoResult.add(splitData[4]); // Adding the close_date
@@ -40,10 +56,5 @@ public class CSVtoArrayConverter {
         // ||  !(splitData[i].contains(keyword2))  || !(splitData[i].contains(keyword3)))
 
     }
-
-
-
-
-
 
 }
